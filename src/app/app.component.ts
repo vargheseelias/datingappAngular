@@ -12,10 +12,9 @@ export class AppComponent implements OnInit{
   title = 'dating app';
   users:any;
 
-  constructor(private http:HttpClient, private accountService:AccountService){}
+  constructor(private accountService:AccountService){}
   ngOnInit() {
     // throw new Error('Method not implemented.');
-    this.getusers();
     this.setCurrentUser();
   }
 
@@ -24,12 +23,5 @@ export class AppComponent implements OnInit{
     this.accountService.setCurrentUser(user);
   }
 
-  getusers(){
-    this.http.get('https://localhost:44335/api/users').subscribe(response => {
-      this.users=response;
-    }, error =>{
-      console.log(error);
-      
-    })
-  }
+  
 }
