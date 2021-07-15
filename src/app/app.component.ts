@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
 
   constructor(private accountService:AccountService,){}
   ngOnInit() {
-    // throw new Error('Method not implemented.');
+   
     this.setCurrentUser();
   }
 
