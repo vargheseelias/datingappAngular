@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" routerLink="/" routerLinkActive='active'>Dating App</a>
-           
+
               <ul class="navbar-nav me-auto" *ngIf="(accountService.currentUser$ |async) as user">
                 <ng-container >
                   <li class="nav-item">
@@ -14,7 +14,7 @@
                     <a class="nav-link " routerLink="/messages"routerLinkActive='active' >messages</a>
                   </li>
                 </ng-container>
-                
+
                 <li class="nav-item">
                   <a class="nav-link " routerLink="/errors"routerLinkActive='active' >Errors</a>
                 </li>
@@ -24,7 +24,7 @@
 
               <div class="dropdown" *ngIf="(accountService.currentUser$ |async) as user" dropdown>
                 <img src="{{user.photoUrl || './asset/user.png'}}" alt="{{user.username}}">
-                  <a class="dropdown-toggle text-light ml-2" dropdownToggle>welcome {{user.username | titlecase}}</a>
+                  <a class="dropdown-toggle text-light ml-2" dropdownToggle>welcome {{user.knownAs | titlecase}}</a>
                   <div class="dropdown-menu mt-3" *dropdownMenu>
                       <a routerLink="/member/edit" class="dropdown-item">edit profile</a>
                       <div class="dropdown-divider"></div>
@@ -35,17 +35,17 @@
 
 
               <form *ngIf="(accountService.currentUser$ |async)===null" #loginform="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off">
-                <input 
+                <input
                 name="username"
                 [(ngModel)]="model.username"
-                class="form-control me-2" 
-                type="text" 
+                class="form-control me-2"
+                type="text"
                 placeholder="UserName" >
-                <input 
+                <input
                 name="password"
                 [(ngModel)]="model.password"
-                class="form-control me-2" 
-                type="password" 
+                class="form-control me-2"
+                type="password"
                 placeholder="Password" >
                 <button class="btn btn-success" type="submit">Login</button>
               </form>
